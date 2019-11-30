@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import NotFound from './pages/NotFound';
-import App from './App';
+import Login from './pages/Login';
 
 export default new VueRouter({
 	mode: 'history',
@@ -12,7 +12,7 @@ export default new VueRouter({
 		// Default layout
 		{
 			path: '/',
-			component: App,
+			component: Login,
 		},
 		// 404 route - keep last
 		{path: '*', component: NotFound},

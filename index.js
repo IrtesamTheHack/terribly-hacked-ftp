@@ -4,6 +4,7 @@ const polka = require('polka'); // Web server
 const log = require('another-logger'); // Logging utility
 const logging = require('./util/logging'); // Request logging middleware
 const config = require('./config'); // Generic configuration
+const sirv = require('sirv'); // Static file middleware
 
 // Routes for non-frontend things
 const api = require('./routes/api');
@@ -22,6 +23,7 @@ const app = polka({
 app.use(
 	// Request logging
 	logging,
+	sirv(config.publicDir, {dev: true}),
 );
 
 // Register the API routes and auth routes
