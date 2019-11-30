@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+
+# Editor stuff
+.vscode
+
+# Generated bundle
+public/*.js
+
+# Secrets
+config.js
