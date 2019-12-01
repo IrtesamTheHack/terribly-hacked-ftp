@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import FTP from './pages/FTP';
 
 export default new VueRouter({
 	mode: 'history',
@@ -13,6 +14,10 @@ export default new VueRouter({
 		{
 			path: '/',
 			component: Login,
+		},
+		{
+			path: '/FTP',
+			component: FTP,
 		},
 		// 404 route - keep last
 		{path: '*', component: NotFound},

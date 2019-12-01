@@ -27,6 +27,9 @@
                 Login
               </button>
             </div>
+            <div class="field">
+              <i class="label">{{message}}</i>
+            </div>
         </div>
       </div>
     </div>
@@ -42,6 +45,7 @@ export default {
     return {
       username: '',
       password: '',
+      message: '',
     }
   },
   methods: {
@@ -49,9 +53,10 @@ export default {
       const user = config.users.admin;
       if (user.username==this.username && user.password == this.password) {
         console.log("Success");
+        this.$router.push({path:'/FTP'});
       }
       else {
-        console.log("Wrong username or password.");
+        this.message = "Wrong username or password.";
       }
     },
   },
