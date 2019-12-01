@@ -8,4 +8,10 @@ module.exports = {
 	port,
 	// Directory where the compiled frontend goes
 	publicDir: path.join(__dirname, 'public'),
+	users: {
+		admin: {
+			username: "comsats",
+			password: "ciit",
+		}
+	}
 };

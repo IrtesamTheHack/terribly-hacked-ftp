@@ -2,7 +2,7 @@ const log = require('another-logger');
 const apiApp = require('polka')();
 const superagent = require('superagent');
 
-apiApp.get('/',(req, res) => {
+apiApp.get('/test',(req, res) => {
 	log.success("Something.");
 });
 

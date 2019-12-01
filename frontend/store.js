@@ -23,7 +23,7 @@ async function makeRequest (path, method = 'GET', body) {
 	}
 }
 
-const store = new Vuex.store({
+const store = new Vuex.Store({
     state: {
 
     },
