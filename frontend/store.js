@@ -25,16 +25,24 @@ async function makeRequest (path, method = 'GET', body) {
 
 const store = new Vuex.Store({
     state: {
-
+		fileData: null,
+		auth: false,
     },
     mutations: {
-
+		GET_FILES (state,fileData) {
+			state.fileData = fileData;
+		}
     },
     getters: {
-
+		isAuth(state) {
+			return state.auth;
+		},
     },
     actions: {
-
+		async getFiles({commit}) {
+			const files = await makeRequest('/api/dirlist');
+			commit('GET_FILES',files);
+		}
     },
 });
 

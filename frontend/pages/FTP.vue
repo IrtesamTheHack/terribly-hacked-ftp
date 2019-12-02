@@ -1,7 +1,7 @@
 <template>
 <section class="hero has-background-black-bis is-fullheight">
   <div class="hero-body">
-    <div class="container">
+    <div v-if="fileData" class="container">
     <table class="is-full-width is-scrollable">
       <thead>
         <tr>
@@ -11,19 +11,45 @@
           <th>Last Modified</th>
         </tr>
       </thead>
-      <tbody class="has-background-primary">
+      <tbody v-for="files in fileData" :key="files.name" class="has-background-primary">
         <tr>
-          <td>CES-9000</td>
-          <td>50mt</td>
+          <td>{{files.name}}</td>
+          <td>{{files.size}}</td>
           <td>9mm</td>
           <td>1/2"</td>
         </tr>
       </tbody>
     </table>
-        </div>
+    </div>
   </div>
 </section>
 </template>
+
+<script>
+import {mapState, mapGetters, mapActions} from 'vuex';
+
+export default {
+  data () {
+    return {
+
+    }
+  },
+  computed: {
+    ...mapState(['fileData','auth']),
+    ...mapGetters(['isAuth']),
+  },
+  methods: {
+    ...mapActions(['getFiles']),
+  },
+  mounted : function () {
+    if (!this.fileData) {
+          setTimeout(async () => {
+            await this.getFiles();
+          },0);
+      }
+  },
+}
+</script>
 
 <style>
 table {
