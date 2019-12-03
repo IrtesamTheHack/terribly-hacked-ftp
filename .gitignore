@@ -6,8 +6,9 @@ node_modules
 # Generated bundle
 public/*.js
 
-FTPServer\.idea
-FTPServer\out
-FTPServer\ReceivedFile
-
+/.idea
+/FTPServer/.idea
+FTPServer/out
+/Downloaded to Server
+/Uploaded to Server/
 
