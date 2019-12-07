@@ -20,7 +20,7 @@ apiApp.get('/dirlist', (req, res) => {
 			const promise = await stat(file).then((data)=> {
 				return {
 					"name": path.basename(file),
-					"size": data["size"],
+					"size": data["size"].toString(),
 				};
 			});
 			dirArr.push(promise);

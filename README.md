@@ -14,6 +14,8 @@ This will maybe work.
 
 ```bash
 
+#Copy and edit config
+$ cp sample.config.js config.js && $EDITOR config.js
 # Install dependencies
 $ yarn
 # Build and run

@@ -52,7 +52,6 @@ export default {
     doAuth() {
       const user = config.users.admin;
       if (user.username==this.username && user.password == this.password) {
-        console.log("Success");
         this.$router.push({path:'/FTP'});
       }
       else {
