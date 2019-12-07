@@ -11,12 +11,12 @@
           <th>Last Modified</th>
         </tr>
       </thead>
-      <tbody v-for="files in fileData" :key="files.name" class="has-background-primary">
+      <tbody v-for="files in fileData" :key="files.id" class="has-background-primary">
         <tr>
           <td>{{files.name}}</td>
           <td>{{files.size}}</td>
-          <td>9mm</td>
-          <td>1/2"</td>
+          <td><button v-on:click="downloadFileSubmit(files.id)" class="button is-success">Download</button></td>
+          <td><button class="button is-danger">Delete</button></td>
         </tr>
       </tbody>
     </table>
@@ -31,7 +31,7 @@ import {mapState, mapGetters, mapActions} from 'vuex';
 export default {
   data () {
     return {
-
+      selectedFile: null,
     }
   },
   computed: {
@@ -39,7 +39,21 @@ export default {
     ...mapGetters(['isAuth']),
   },
   methods: {
-    ...mapActions(['getFiles']),
+    ...mapActions(['getFiles','downloadFile']),
+    downloadFileSubmit (fileId) {
+      setTimeout(async () => {
+        const file = async () => {
+          return new Promise ((resolve,reject) => {
+            const file = this.fileData.find(file => file.id == fileId);
+            resolve(file.name);
+          });
+        };
+        var promise = file();
+        promise.then(async (result)=> {
+          await this.downloadFile(result);
+        })
+      });
+    },
   },
   mounted : function () {
     if (!this.fileData) {

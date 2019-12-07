@@ -27,11 +27,15 @@ const store = new Vuex.Store({
     state: {
 		fileData: null,
 		auth: false,
+		downloadedFile: null,
     },
     mutations: {
 		GET_FILES (state,fileData) {
 			state.fileData = fileData;
-		}
+		},
+		DOWNLOAD_FILE (state,file) {
+			state.downloadedFile = file;
+		},
     },
     getters: {
 		isAuth(state) {
@@ -42,7 +46,15 @@ const store = new Vuex.Store({
 		async getFiles({commit}) {
 			const files = await makeRequest('/api/dirlist');
 			commit('GET_FILES',files);
-		}
+		},
+		async downloadFile({commit},fileName) {
+			setTimeout(() => {
+				const response = {
+				  file: `/api/download/${fileName}`,
+				};
+				window.open(response.file);
+			  }, 50);
+		},
     },
 });
 
