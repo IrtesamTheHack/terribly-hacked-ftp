@@ -9,8 +9,7 @@ public class CLIENTConnection implements Runnable {
 
     private Socket clientSocket;
     private BufferedReader in = null;
-    private String DOWNLOAD_PATH = "F:\\Google Drive\\COMSATS University Islamabad\\Semester 5\\" +
-            "CSC 339 Data Communication and Networks\\Lab\\FTPServer\\ReceivedFiles\\";
+    private String UPLOAD_PATH = "..\\..\\Uploaded to Server\\";
 
     public CLIENTConnection(Socket client) {
         this.clientSocket = client;
@@ -54,18 +53,16 @@ public class CLIENTConnection implements Runnable {
             DataInputStream clientData = new DataInputStream(clientSocket.getInputStream());
 
             String fileName = clientData.readUTF();
-            System.out.println(fileName);
-            File file = new File(DOWNLOAD_PATH);
-            if (!file.exists()){
-                file.mkdir();
-                file = new File(DOWNLOAD_PATH + fileName);
+            File directory = new File(UPLOAD_PATH);
+            if (!directory.isDirectory()){
+                directory.mkdir();
+                directory  = new File(UPLOAD_PATH + fileName);
             }
             else{
-                file = new File(DOWNLOAD_PATH + fileName);
+                directory = new File(UPLOAD_PATH + fileName);
             }
-            OutputStream output = new FileOutputStream(file);
+            OutputStream output = new FileOutputStream(directory);
             long size = clientData.readLong();
-            System.out.println(size);
             byte[] buffer = new byte[1024];
             while (size > 0 && (bytesRead = clientData.read(buffer, 0, (int) Math.min(buffer.length, size))) != -1) {
                 output.write(buffer, 0, bytesRead);
@@ -84,7 +81,7 @@ public class CLIENTConnection implements Runnable {
     public void sendFile(String fileName) {
         try {
             //handle file read
-            File myFile = new File(fileName);
+            File myFile = new File(UPLOAD_PATH + fileName);
             byte[] mybytearray = new byte[(int) myFile.length()];
 
             FileInputStream fis = new FileInputStream(myFile);
