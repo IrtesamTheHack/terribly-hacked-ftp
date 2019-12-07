@@ -6,16 +6,14 @@ node_modules
 # Generated bundle
 public/*.js
 
-#Hide secrets
+# Hide secrets
 config.js
 
-/.idea
-/FTPServer/.idea
-FTPServer/out
-/Downloaded to Server
-/Uploaded to Server/
+# Weird IntelliJ folder
+.idea
 
-#Java Server Stuff
-FTPServer\.idea
-FTPServer\out
-FTPServer\ReceivedFile
+#Ignore everything in server directory except test tiles
+Server/*
+!Server/Test1.txt
+!Server/Test2.txt
+!Server/Test3.txt

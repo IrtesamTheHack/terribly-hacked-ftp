@@ -11,7 +11,7 @@ public class FileClient {
     private static String fileName;
     private static BufferedReader stdin;
     private static PrintStream os;
-    private  String DOWNLOAD_PATH = ".\\Downloaded to Server\\";
+    private  String DOWNLOAD_PATH = ".\\Client\\";
 
     public static void main(String[] args) throws IOException {
         try {
