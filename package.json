@@ -26,9 +26,11 @@
   "dependencies": {
     "another-logger": "^2.0.0",
     "bulma": "^0.7.5",
+    "downloadjs": "^1.4.7",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "promisify": "^0.0.3",
+    "serialize-javascript": "^2.1.1",
     "sirv": "^0.4.2",
     "socket.io": "^2.3.0",
     "superagent": "^5.0.2",

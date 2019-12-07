@@ -6,9 +6,16 @@ node_modules
 # Generated bundle
 public/*.js
 
+#Hide secrets
+config.js
+
 /.idea
 /FTPServer/.idea
 FTPServer/out
 /Downloaded to Server
 /Uploaded to Server/
 
+#Java Server Stuff
+FTPServer\.idea
+FTPServer\out
+FTPServer\ReceivedFile

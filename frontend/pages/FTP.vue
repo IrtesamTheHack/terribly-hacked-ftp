@@ -1,7 +1,7 @@
 <template>
 <section class="hero has-background-black-bis is-fullheight">
   <div class="hero-body">
-    <div class="container">
+    <div v-if="fileData" class="container">
     <table class="is-full-width is-scrollable">
       <thead>
         <tr>
@@ -11,19 +11,59 @@
           <th>Last Modified</th>
         </tr>
       </thead>
-      <tbody class="has-background-primary">
+      <tbody v-for="files in fileData" :key="files.id" class="has-background-primary">
         <tr>
-          <td>CES-9000</td>
-          <td>50mt</td>
-          <td>9mm</td>
-          <td>1/2"</td>
+          <td>{{files.name}}</td>
+          <td>{{files.size}}</td>
+          <td><button v-on:click="downloadFileSubmit(files.id)" class="button is-success">Download</button></td>
+          <td><button class="button is-danger">Delete</button></td>
         </tr>
       </tbody>
     </table>
-        </div>
+    </div>
   </div>
 </section>
 </template>
+
+<script>
+import {mapState, mapGetters, mapActions} from 'vuex';
+
+export default {
+  data () {
+    return {
+      selectedFile: null,
+    }
+  },
+  computed: {
+    ...mapState(['fileData','auth']),
+    ...mapGetters(['isAuth']),
+  },
+  methods: {
+    ...mapActions(['getFiles','downloadFile']),
+    downloadFileSubmit (fileId) {
+      setTimeout(async () => {
+        const file = async () => {
+          return new Promise ((resolve,reject) => {
+            const file = this.fileData.find(file => file.id == fileId);
+            resolve(file.name);
+          });
+        };
+        var promise = file();
+        promise.then(async (result)=> {
+          await this.downloadFile(result);
+        })
+      });
+    },
+  },
+  mounted : function () {
+    if (!this.fileData) {
+          setTimeout(async () => {
+            await this.getFiles();
+          },0);
+      }
+  },
+}
+</script>
 
 <style>
 table {
