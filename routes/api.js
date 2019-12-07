@@ -5,7 +5,6 @@ const fs = require('fs');
 const config = require('../config');
 const path = require('path');
 const util = require('util');
-const store = require('vuex');
 
 apiApp.get('/dirlist', (req, res) => {
 	let dirArr = [];
@@ -37,6 +36,26 @@ apiApp.get('/dirlist', (req, res) => {
 apiApp.get('/download/:fileName', (req,res) => {
 	const file = config.serverDir + '/' + req.params.fileName;
 	res.download(file);
+});
+
+apiApp.post('/upload', (req,res) => {
+	if (!req.files || Object.keys(req.files).length === 0) {
+		return res.status(400).send('No files were uploaded.');
+	  }
+	log.success(req.files);
+	
+	  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+	  let sampleFile = req.files.sampleFile;
+	  let uploadPath = config.serverDir + '/' + sampleFile.name;
+	
+	  // Use the mv() method to place the file somewhere on your server
+	  sampleFile.mv(uploadPath, function(err) {
+		if (err) {
+			return res.status(500).send(err);
+		}
+	
+		res.send('File uploaded!');
+	  });
 });
 
 module.exports = apiApp;
