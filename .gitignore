@@ -17,3 +17,5 @@ Server/*
 !Server/Test1.txt
 !Server/Test2.txt
 !Server/Test3.txt
+Client/*
+FTPServer/out/

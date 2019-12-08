@@ -9,7 +9,7 @@ public class CLIENTConnection implements Runnable {
 
     private Socket clientSocket;
     private BufferedReader in = null;
-    private String UPLOAD_PATH = "..\\..\\Server\\";
+    private String UPLOAD_PATH = ".\\Server\\";
 
     public CLIENTConnection(Socket client) {
         this.clientSocket = client;
