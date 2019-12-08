@@ -14,6 +14,7 @@ config.js
 
 #Ignore everything in server directory except test tiles
 Server/*
+Client/*
 !Server/Test1.txt
 !Server/Test2.txt
 !Server/Test3.txt
