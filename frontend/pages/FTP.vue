@@ -7,7 +7,7 @@
         <tr>
           <th>File Name</th>
           <th>Size</th>
-          <th>File Type</th>
+          <th>Download</th>
           <th>Last Modified</th>
         </tr>
       </thead>
@@ -20,6 +20,9 @@
         </tr>
       </tbody>
     </table>
+    <form id="uploadForm" enctype="multipart/form-data" v-on:change="uploadFile">
+    <input type="file" id="file" name="file">
+    </form>
     </div>
   </div>
 </section>
@@ -27,11 +30,12 @@
 
 <script>
 import {mapState, mapGetters, mapActions} from 'vuex';
+const axios = require('axios');
 
 export default {
   data () {
     return {
-      selectedFile: null,
+      file: '',
     }
   },
   computed: {
@@ -53,6 +57,16 @@ export default {
           await this.downloadFile(result);
         })
       });
+    },
+    uploadFile () {
+      var formData = new FormData();
+      var imagefile = document.querySelector('#file');
+      formData.append("file", imagefile.files[0]);
+      axios.post('/api/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
     },
   },
   mounted : function () {

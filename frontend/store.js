@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+const axios = require('axios');
 
 Vue.use(Vuex);
 
@@ -32,9 +33,6 @@ const store = new Vuex.Store({
     mutations: {
 		GET_FILES (state,fileData) {
 			state.fileData = fileData;
-		},
-		DOWNLOAD_FILE (state,file) {
-			state.downloadedFile = file;
 		},
     },
     getters: {
