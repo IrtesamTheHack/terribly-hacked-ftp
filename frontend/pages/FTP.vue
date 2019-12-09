@@ -86,7 +86,7 @@ export default {
       finally {
         setTimeout(async () => {
           await this.getFiles();
-        },0);
+        });
       }
     },
   },
@@ -94,7 +94,7 @@ export default {
     if (!this.fileData) {
           setTimeout(async () => {
             await this.getFiles();
-          },0);
+          });
       }
   },
 }

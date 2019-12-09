@@ -9,6 +9,7 @@ module.exports = {
 	// Directory where the compiled frontend goes
 	publicDir: path.join(__dirname, 'public'),
 	serverDir: path.join(__dirname,'Server'),
+	clientDir: path.join(__dirname,'Client'),
 	users: {
 		admin: {
 			username: "",

@@ -1,6 +1,4 @@
-const log = require('another-logger');
 const apiApp = require('express')();
-const superagent = require('superagent');
 const fs = require('fs');
 const config = require('../config');
 const path = require('path');
