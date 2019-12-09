@@ -28,6 +28,7 @@ app.use(
 // Register the API routes and auth routes
 app.use('/api', api);
 app.use(fileUpload());
+app.set('view engine', 'ejs');
 
 // Start the server
 app.listen(config.port, () => {

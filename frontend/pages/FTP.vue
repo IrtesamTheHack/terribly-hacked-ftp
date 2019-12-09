@@ -61,7 +61,7 @@ export default {
     uploadFile () {
       var formData = new FormData();
       var imagefile = document.querySelector('#file');
-      formData.append("image", imagefile.files[0]);
+      formData.append("file", imagefile.files[0]);
       axios.post('/api/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
