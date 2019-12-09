@@ -16,7 +16,7 @@ export default new VueRouter({
 			component: Login,
 		},
 		{
-			path: '/FTP',
+			path: '/ftp',
 			component: FTP,
 		},
 		// 404 route - keep last

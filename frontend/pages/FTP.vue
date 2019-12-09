@@ -6,7 +6,7 @@
       <thead>
         <tr>
           <th>File Name</th>
-          <th>Size</th>
+          <th>Size (Bytes)</th>
           <th>Download</th>
           <th>Last Modified</th>
         </tr>
@@ -16,15 +16,27 @@
           <td>{{files.name}}</td>
           <td>{{files.size}}</td>
           <td><button v-on:click="downloadFileSubmit(files.id)" class="button is-success">Download</button></td>
-          <td><button class="button is-danger">Delete</button></td>
+          <td></td>
         </tr>
       </tbody>
     </table>
-    <form id="uploadForm" enctype="multipart/form-data" v-on:change="uploadFile">
-    <input type="file" id="file" name="file">
-    </form>
-    </div>
   </div>
+  </div>
+  <div class="container">
+  <div class="file is-boxed is-centered is-large is-success">
+      <label class="file-label">
+      <input v-on:change="uploadFile" class="file-input" type="file" name="file" id="file">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fas fa-cloud-upload-alt"></i>
+        </span>
+        <span class="file-label">
+          Upload
+        </span>
+      </span>
+      </label>
+    </div>
+    </div>
 </section>
 </template>
 
@@ -62,11 +74,20 @@ export default {
       var formData = new FormData();
       var imagefile = document.querySelector('#file');
       formData.append("file", imagefile.files[0]);
-      axios.post('/api/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
+      try {
+        setTimeout (async () => {
+          axios.post('/api/upload', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          });
+        });
+      }
+      finally {
+        setTimeout(async () => {
+          await this.getFiles();
+        },0);
+      }
     },
   },
   mounted : function () {
