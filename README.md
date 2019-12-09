@@ -1,6 +1,6 @@
 # Terribly Hacked FTP
 
-[![Dependency Status](https://david-dm.org/irtesamthehack/terribly-hacked-ftp.svg)](https://david-dm.org/irtesamthehack/terribly-hacked-ftp) ![built with Vue.js](https://img.shields.io/badge/built_with_Vue.js-4FC08D.svg?logo=vue.js&logoColor=fff)
+![built with Vue.js](https://img.shields.io/badge/built_with_Vue.js-4FC08D.svg?logo=vue.js&logoColor=fff)
 
 ~~This will maybe work.~~ We did it!
 
