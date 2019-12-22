@@ -9,9 +9,6 @@ const indexPage = fs.readFileSync(path.join(config.publicDir, 'index.html'));
 
 // Define the main application
 const app = express({
-	// The frontend uses history mode, so any route that isn't already defined
-	// gets the frontend index page and Vue handles it from there (including
-	// rendering a "not found" page when appropriate)
 	onNoMatch: (request, response) => response.end(indexPage),
 });
 

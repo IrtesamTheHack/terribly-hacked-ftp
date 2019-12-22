@@ -7,7 +7,8 @@
             <div class="field">
               <label for="" class="label">Username</label>
               <div class="control has-icons-left">
-                <input type="text" placeholder="FTP Username" v-model="username" class="input" required>
+                <input type="text" placeholder="FTP Username"
+                 v-model="username" class="input" required>
                 <span class="icon is-small is-left">
                   <i class="fa fa-envelope"></i>
                 </span>
@@ -16,7 +17,8 @@
             <div class="field">
               <label for="" class="label">Password</label>
               <div class="control has-icons-left">
-                <input type="password" placeholder="*******" v-model="password" class="input" required>
+                <input type="password" placeholder="*******"
+                 v-model="password" class="input" required>
                 <span class="icon is-small is-left">
                   <i class="fa fa-lock"></i>
                 </span>

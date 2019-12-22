@@ -8,15 +8,15 @@
           <th>File Name</th>
           <th>Size (Bytes)</th>
           <th>Download</th>
-          <th>Last Modified</th>
         </tr>
       </thead>
-      <tbody v-for="files in fileData" :key="files.id" class="has-background-primary">
+      <tbody v-for="files in fileData" :key="files.id"
+       class="has-background-primary">
         <tr>
           <td>{{files.name}}</td>
           <td>{{files.size}}</td>
-          <td><button v-on:click="downloadFileSubmit(files.id)" class="button is-success">Download</button></td>
-          <td></td>
+          <td><button v-on:click="downloadFileSubmit(files.id)"
+           class="button is-success">Download</button></td>
         </tr>
       </tbody>
     </table>
@@ -25,7 +25,8 @@
   <div class="container">
   <div class="file is-boxed is-centered is-large is-success">
       <label class="file-label">
-      <input v-on:change="uploadFile" class="file-input" type="file" name="file" id="file">
+      <input v-on:change="uploadFile" class="file-input" type="file"
+       name="file" id="file">
       <span class="file-cta">
         <span class="file-icon">
           <i class="fas fa-cloud-upload-alt"></i>

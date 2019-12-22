@@ -18,3 +18,9 @@ Client/*
 !Server/Test1.txt
 !Server/Test2.txt
 !Server/Test3.txt
+
+#Ignore all the LaTeX files generated during compilation
+Project Report/*
+!Project Report/images
+!Project Report/FA17BCS058_FA17BCS088_FA17BCS096.tex
+!Project Report/FA17BCS058_FA17BCS088_FA17BCS096.pdf
